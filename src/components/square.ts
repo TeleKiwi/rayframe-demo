@@ -13,6 +13,9 @@ export class Square extends Component {
 
     static entityList: Square[] = [];
 
+    static colourList: r.Color[] = [r.LIGHTGRAY, r.GRAY, r.DARKGRAY, r.YELLOW, r.GOLD, r.ORANGE, r.PINK, r.RED, r.MAROON, r.GREEN, r.LIME,
+    r.DARKGREEN, r.SKYBLUE, r.BLUE, r.DARKBLUE, r.PURPLE, r.VIOLET, r.DARKPURPLE, r.PURPLE, r.BEIGE, r.BROWN, r.DARKBROWN, r.MAGENTA, r.BLACK];
+
     constructor(x: number, y:number, colour: r.Color, angle: number) {
        super(x, y);
        this.angle = angle;
@@ -36,34 +39,8 @@ export class Square extends Component {
     }
 
     static randColour = (): r.Color => {
-        const col = Math.floor(Math.random() * 23) + 1; // rand between 1 and 23
+        const col = Math.floor(Math.random() * 23); // rand between 0 and 22
         
-        //* this code sucks, ik, but no other way to do it
-        switch(col) {
-            case 1:  return r.LIGHTGRAY;
-            case 2:  return r.GRAY;
-            case 3:  return r.DARKGRAY;
-            case 4:  return r.YELLOW;
-            case 5:  return r.GOLD;
-            case 6:  return r.ORANGE;
-            case 7:  return r.PINK;
-            case 8:  return r.RED;
-            case 9:  return r.MAROON;
-            case 10: return r.GREEN;
-            case 11: return r.LIME;
-            case 12: return r.DARKGREEN;
-            case 13: return r.SKYBLUE;
-            case 14: return r.BLUE;
-            case 15: return r.DARKBLUE;
-            case 16: return r.PURPLE;
-            case 17: return r.VIOLET;
-            case 18: return r.DARKPURPLE;
-            case 19: return r.BEIGE;
-            case 20: return r.BROWN;
-            case 21: return r.DARKBROWN;
-            case 22: return r.MAGENTA;
-            case 23: return r.BLACK;
-            //! we never want to return raywhite, white or transparent.
-        }
+        return this.colourList[col];
     }
 }
