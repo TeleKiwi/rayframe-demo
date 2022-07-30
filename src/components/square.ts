@@ -2,15 +2,24 @@ import * as r from "raylib";
 import { Component } from "./component";
 
 export class Square extends Component {
+
     colour: r.Color = r.WHITE;
+    angle: number
+
     static entityList: Square[] = [];
-    constructor(x: number, y:number, colour: r.Color ) {
+
+    constructor(x: number, y:number, colour: r.Color, angle: number) {
        super(x, y);
+       this.angle = angle;
        this.colour = colour;
     }
 
+    static randAngle = (): number => {
+        return Math.floor(Math.random() * 360) + 1;
+    }
+
     static randColour = (): r.Color => {
-        const col = Math.floor(Math.random() * 23) + 1 // rand between 1 and 23
+        const col = Math.floor(Math.random() * 23) + 1; // rand between 1 and 23
         
         //* this code sucks, ik, but no other way to do it
         switch(col) {
@@ -37,7 +46,7 @@ export class Square extends Component {
             case 21: return r.DARKBROWN;
             case 22: return r.MAGENTA;
             case 23: return r.BLACK;
-            // we never want to return raywhite, white or transparent.
+            //! we never want to return raywhite, white or transparent.
         }
     }
 }

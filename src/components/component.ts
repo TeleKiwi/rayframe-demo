@@ -9,7 +9,7 @@
  */ 
 
 export class Component {
-    position: [number, number] = [0, 0]
+    position: [number, number] = [0, 0];
     constructor(x: number, y: number) {
         this.position[0] = x;
         this.position[1] = y;

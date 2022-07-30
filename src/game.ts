@@ -23,8 +23,14 @@ export class Game
     //* Your game logic should go here. Don't do any rendering in this function!
     Tick = (): void => {
         if(r.IsKeyPressed(r.KEY_SPACE)) {
-            Square.entityList.push(new Square(this.xCenter() - 40, this.yCenter() - 40, Square.randColour()));
+            Square.entityList.push(new Square(this.xCenter() - 40, this.yCenter() - 40, Square.randColour(), Square.randAngle()));
         }
+
+        Square.entityList.forEach((element) => {
+            //* make each square move in their random directino.
+            element.position[0] += (5 * Math.sin(element.angle));
+            element.position[1] += (5 * Math.cos(element.angle));
+        })
     }
 
     //* This is where you should interact with Raylib's drawing functions.
@@ -51,6 +57,9 @@ export class Game
 
     //* Handle all your destructions here e.g unloading textures.
     Exit = (): void => {
+        Square.entityList.forEach(() => {
+            Square.entityList.pop();
+        });
         r.CloseWindow();
     }
 }
