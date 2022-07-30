@@ -1,4 +1,5 @@
 import r = require('raylib');
+import { Square } from './components/square';
 
 export class Game
 {
@@ -21,16 +22,20 @@ export class Game
 
     //* Your game logic should go here. Don't do any rendering in this function!
     Tick = (): void => {
-        
+        if(r.IsKeyPressed(r.KEY_SPACE)) {
+            Square.entityList.push(new Square(this.xCenter() - 40, this.yCenter() - 40, Square.randColour()));
+        }
     }
 
     //* This is where you should interact with Raylib's drawing functions.
     Render = (): void => {
         r.BeginDrawing();
-        r.ClearBackground(r.RAYWHITE);
+        r.ClearBackground(r.WHITE);
 
         r.DrawFPS(0, 0)
-        r.DrawText("Congrats! You created your first rayframe window!", 135, 200, 20, r.LIGHTGRAY)
+        Square.entityList.forEach((element) => {
+            r.DrawRectangle(element.position[0], element.position[1], 40, 40, element.colour)
+        })
 
         r.EndDrawing();
     }

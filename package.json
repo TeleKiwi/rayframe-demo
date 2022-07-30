@@ -10,22 +10,5 @@
   "scripts": {
     "start": "ts-node src/main.ts",
     "build": "cd src && tsc && cd .."
-  },
-  "name": "rayframe",
-  "description": "Basic OO abstraction layer/template for node-raylib projects.",
-  "version": "1.4.1",
-  "main": "src/main.ts",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TeleKiwi/rayframe.git"
-  },
-  "keywords": [
-    "node-raylib"
-  ],
-  "author": "TeleKiwi",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/TeleKiwi/rayframe/issues"
-  },
-  "homepage": "https://github.com/TeleKiwi/rayframe#readme"
+  }
 }
