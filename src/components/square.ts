@@ -5,6 +5,11 @@ export class Square extends Component {
 
     colour: r.Color = r.WHITE;
     angle: number
+    xSpeed: number = 0;
+    ySpeed: number = 0;
+
+    xBounce: number = 1;
+    yBounce: number = 1;
 
     static entityList: Square[] = [];
 
@@ -12,6 +17,18 @@ export class Square extends Component {
        super(x, y);
        this.angle = angle;
        this.colour = colour;
+    }
+
+    doXCollision = (): void => {
+        if(this.position[0] >= 760 || this.position[0] <= 0) {
+            this.xBounce *= -1;
+        }
+    }
+
+    doYCollision = (): void => {
+        if(this.position[1] >= 410 || this.position[1] <= 0) {
+            this.yBounce *= -1;
+        }
     }
 
     static randAngle = (): number => {

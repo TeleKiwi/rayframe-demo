@@ -27,9 +27,14 @@ export class Game
         }
 
         Square.entityList.forEach((element) => {
-            //* make each square move in their random directino.
-            element.position[0] += (5 * Math.sin(element.angle));
-            element.position[1] += (5 * Math.cos(element.angle));
+            //* make each square move in their random direction.
+            element.xSpeed = ((5 * element.xBounce) * Math.sin(element.angle));
+            element.ySpeed = ((5 * element.yBounce) * Math.cos(element.angle));
+
+            element.position[0] += element.xSpeed;
+            element.doXCollision();
+            element.position[1] += element.ySpeed;
+            element.doYCollision();
         })
     }
 
